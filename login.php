@@ -26,6 +26,8 @@
          $senha=$_POST['senha'];
 
          if (($nome_usuario=="eduarda") and ($senha=="barrao")){
+            session_start();
+            $_SESSION['nome_usuario']= $nome_usuario;
             header(header: "location: restrito");
          } else{
             echo "login invalido";
