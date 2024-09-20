@@ -20,6 +20,19 @@
             <input type="submit" value="Acessar" class="btn" />
             <a href="cadastro.php">Cadastre-se</a>
         </form>
+        <?php 
+         if (isset($_POST['nome_usuario'])){
+         $nome_usuario= $_POST['nome_usuario'];
+         $senha=$_POST['senha'];
+
+         if (($nome_usuario=="eduarda") and ($senha=="barrao")){
+            header(header: "location: restrito");
+         } else{
+            echo "login invalido";
+         }
+        }
+        
+        ?>
        
 
     </div>
