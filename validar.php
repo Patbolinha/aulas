@@ -6,7 +6,7 @@ if(isset($_SESSION['nome_usuario'])){
 }
 else{
     session_destroy();
-    header("location: ../login.php");
+    header(header:"location: ../login.php");
     echo "vc foi expulso";
 }
 ?>

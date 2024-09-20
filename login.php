@@ -29,6 +29,7 @@
             session_start();
             $_SESSION['nome_usuario']= $nome_usuario;
             header(header: "location: restrito");
+    
          } else{
             echo "login invalido";
          }
