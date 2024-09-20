@@ -2,7 +2,6 @@
 <!doctype html>
 <?php
 include "../validar.php";
-
 ?>
 <html lang="en">
 
@@ -19,6 +18,13 @@ include "../validar.php";
       <div class="linha">
       
         <div class="jumbotron">
+          <?php
+          session_start();
+          if(isset($_SESSION['nome_usuario'])){
+            header("location:../login.php");
+            exit();
+          }
+          ?>
           <h1 class="display-4">Sistema de Cadastro de Pessoas</h1>
           <p class="lead">Sistema desenvolvido por alunos do curso tecnico em informática e desenvolvimento de sistemas da EEEP Paulo Barbosa Leite</p>
           <hr class="my-4">
