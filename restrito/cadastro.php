@@ -1,5 +1,9 @@
 
 <!doctype html>
+<?php
+include "../validar.php";
+
+?>
 <html lang="en">
 
 <head>
