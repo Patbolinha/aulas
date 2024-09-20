@@ -21,18 +21,28 @@
             <a href="cadastro.php">Cadastre-se</a>
         </form>
         <?php 
-         if (isset($_POST['nome_usuario'])){
-         $nome_usuario= $_POST['nome_usuario'];
-         $senha=$_POST['senha'];
+         include ("restrito/conexao.php");
+         session_start();
 
-         if (($nome_usuario=="eduarda") and ($senha=="barrao")){
-            session_start();
-            $_SESSION['nome_usuario']= $nome_usuario;
-            header(header: "location: restrito");
-    
-         } else{
-            echo "login invalido";
-         }
+
+         if($_SERVER["REQUEST_METHOD"]=="POST"){
+             $nome_usuario= mysqli_real_escape_string(mysql: $conexao, string: $_POST['nome_usuario']);
+             $senha = $_POST['senha'];
+
+             $sql="SELECT * FROM usuarios WHERE nome_usuario= '$nome_usuario'";
+             $resultado= mysqli_query(mysql: $conexao, query: $sql);
+             $usuario= mysqli_fetch_assoc(result: $resultado);
+
+             if($usuario && password_verify($senha, $usuario['senha'])){
+                $_SESSION['nome_usuario']= $nome_usuario;
+                header("location: restrito/index.php");
+
+
+             }
+             else{
+                echo "error";
+             }
+
         }
         
         ?>
